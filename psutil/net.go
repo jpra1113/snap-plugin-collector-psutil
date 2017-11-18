@@ -203,13 +203,17 @@ func getNetIOCounterMetricTypes() ([]plugin.Metric, error) {
 }
 
 func getInterfaceConfiguration(ifaceName string) (map[string]string, error) {
-
 	interfaceConfig, err := net.InterfaceByName(ifaceName)
 	if err != nil {
 		return nil, err
 	}
 	tags := make(map[string]string)
-	tags["hardware_addr"] = string(interfaceConfig.HardwareAddr)
-	tags["mtu"] = strconv.Itoa(interfaceConfig.MTU)
+	hardwareAddr := string(interfaceConfig.HardwareAddr)
+	if hardwareAddr != "" {
+		tags["hardware_addr"] = hardwareAddr
+	}
+	if interfaceConfig.MTU != 0 {
+		tags["mtu"] = strconv.Itoa(interfaceConfig.MTU)
+	}
 	return tags, nil
 }
