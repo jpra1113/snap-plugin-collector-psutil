@@ -20,7 +20,7 @@ package main
 
 // Import the snap plugin library
 import (
-	"github.com/intelsdi-x/snap-plugin-collector-psutil/psutil"
+	"github.com/hyperpilotio/snap-plugin-collector-psutil/psutil"
 	"github.com/intelsdi-x/snap-plugin-lib-go/v1/plugin"
 )
 
