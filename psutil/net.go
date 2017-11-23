@@ -208,7 +208,7 @@ func getInterfaceConfiguration(ifaceName string) (map[string]string, error) {
 		return nil, err
 	}
 	tags := make(map[string]string)
-	hardwareAddr := string(interfaceConfig.HardwareAddr)
+	hardwareAddr := interfaceConfig.HardwareAddr.String()
 	if hardwareAddr != "" {
 		tags["hardware_addr"] = hardwareAddr
 	}
