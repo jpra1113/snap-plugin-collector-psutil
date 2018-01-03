@@ -46,11 +46,11 @@ export GOARCH=amd64
 mkdir -p "${build_dir}/${GOOS}/x86_64"
 "${go_build[@]}" -o "${build_dir}/${GOOS}/x86_64/${plugin_name}" . || exit 1
 
-_info "building plugin: ${plugin_name} for Windows"
-export GOOS=windows
-export GOARCH=amd64
-mkdir -p "${build_dir}/${GOOS}/x86_64"
-"${go_build[@]}" -o "${build_dir}/${GOOS}/x86_64/${plugin_name}.exe" . || exit 1
+# _info "building plugin: ${plugin_name} for Windows"
+# export GOOS=windows
+# export GOARCH=amd64
+# mkdir -p "${build_dir}/${GOOS}/x86_64"
+# "${go_build[@]}" -o "${build_dir}/${GOOS}/x86_64/${plugin_name}.exe" . || exit 1
 
 if [[ "$(uname -s)" == "Darwin" ]]; then
 _info "building plugin: ${plugin_name} for Darwin"

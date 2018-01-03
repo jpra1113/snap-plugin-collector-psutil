@@ -21,7 +21,8 @@ package main
 // Import the snap plugin library
 import (
 	"github.com/hyperpilotio/snap-plugin-collector-psutil/psutil"
-	"github.com/intelsdi-x/snap-plugin-lib-go/v1/plugin"
+	"github.com/jpra1113/snap-plugin-lib-go/v1/plugin"
+	"google.golang.org/grpc"
 )
 
 const (
@@ -29,7 +30,18 @@ const (
 	pluginVersion = 14
 )
 
+const (
+	maxMessageSize = 100 << 20
+)
+
 // plugin bootstrap
 func main() {
-	plugin.StartCollector(psutil.NewPsutilCollector(), pluginName, pluginVersion)
+	plugin.StartCollector(
+		psutil.NewPsutilCollector(),
+		pluginName,
+		pluginVersion,
+		plugin.GRPCServerOptions(grpc.MaxMsgSize(maxMessageSize)),
+		plugin.GRPCServerOptions(grpc.MaxSendMsgSize(maxMessageSize)),
+		plugin.GRPCServerOptions(grpc.MaxRecvMsgSize(maxMessageSize)),
+	)
 }
