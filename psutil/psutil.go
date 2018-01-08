@@ -29,6 +29,11 @@ import (
 	log "github.com/Sirupsen/logrus"
 )
 
+const (
+	PluginName    = "psutil"
+	PluginVersion = 14
+)
+
 func NewPsutilCollector() *Psutil {
 	return &Psutil{}
 }

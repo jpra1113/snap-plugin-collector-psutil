@@ -1,4 +1,4 @@
-package: github.com/hyperpilotio/snap-plugin-collector-psutil
+package: github.com/jpra1113/snap-plugin-collector-psutil
 import:
 - package: github.com/jpra1113/snap-plugin-lib-go
 - package: github.com/shirou/gopsutil
